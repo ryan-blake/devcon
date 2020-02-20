@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {
-  REGISTER_SUCCESS, REGISTER_FAIL,USER_LOADED,AUTH_ERROR,LOGIN_SUCCESS,LOGIN_FAIL, LOGOUT, CLEAR_PROFILE
+  REGISTER_SUCCESS, REGISTER_FAIL,USER_LOADED,AUTH_ERROR,LOGIN_SUCCESS,LOGIN_FAIL, LOGOUT, CLEAR_PROFILE,TWITTER_USER
 } from './types'
 import {setAlert} from './alert'
 import setAuthToken from '../utils/setAuthToken'
@@ -16,7 +16,6 @@ export const loadUser = () => async dispatch => {
       payload: res.data
     })
   }catch(err){
-
     console.log(JSON.stringify(err))
     dispatch({
       type: AUTH_ERROR
@@ -86,6 +85,21 @@ export const login = (email, password) => async dispatch => {
       type: LOGIN_FAIL
     });
   }
+}
+
+export const verifyTwitter = () => async dispatch => {
+    try {
+    const res = await axios.get('/api/auth/twitter');
+    dispatch({
+      type: TWITTER_USER,
+      payload: res.data
+    })
+  }catch(err){
+    console.log(JSON.stringify(err))
+    dispatch(setAlert("CANNOT VERIFY TWITTER"), 'danger')
+
+  }
+  console.log('ran')
 }
 
 //Logout / clear / user

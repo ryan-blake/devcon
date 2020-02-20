@@ -20,6 +20,8 @@
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.5",
+    "passport": "^0.4.1",
+    "passport-twitter": "^1.0.4",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.8"
   },

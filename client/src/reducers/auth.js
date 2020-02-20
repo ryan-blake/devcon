@@ -1,4 +1,4 @@
-import {REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED,AUTH_ERROR,LOGIN_SUCCESS,LOGIN_FAIL,LOGOUT,ACCOUNT_DELETED}
+import {REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED,AUTH_ERROR,LOGIN_SUCCESS,LOGIN_FAIL,LOGOUT,ACCOUNT_DELETED,TWITTER_USER}
   from '../actions/types'
 
 const initialState = {
@@ -19,6 +19,8 @@ export default function(state = initialState, action)  {
     case LOGIN_SUCCESS:
       sessionStorage.setItem('token',payload.token)
       return {...state, ...payload, isAuthenticated: true, loading:false};
+    case TWITTER_USER:
+      return {...state, ...payload, loading:false};
     case REGISTER_FAIL:
     case AUTH_ERROR:
     case LOGIN_FAIL:

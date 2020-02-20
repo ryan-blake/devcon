@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const auth = require('../../middleware/auth');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+
 const { check, validationResult } = require('express-validator/check');
 
 const User = require('../../models/User');
@@ -76,5 +77,26 @@ router.post(
     }
   }
 );
+
+var passport = require('passport')
+  , TwitterStrategy = require('passport-twitter').Strategy;
+
+passport.use(new TwitterStrategy({
+    consumerKey: config.get('TwitKey'),
+    consumerSecret: config.get('TwitSecret'),
+    callbackURL: "https://twitter.com"
+  },
+  function(token, tokenSecret, profile, done) {
+    console.log(token)
+    res.status(200).send('ok')
+  }
+));
+
+router.get('/twitter', passport.authenticate('twitter'));
+
+
+router.get('/twitter/callback',
+  passport.authenticate('twitter', { successRedirect: '/',
+                                     failureRedirect: '/login' }));
 
 module.exports = router;
