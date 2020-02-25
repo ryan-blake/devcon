@@ -84,7 +84,7 @@ var passport = require('passport')
 passport.use(new TwitterStrategy({
     consumerKey: config.get('TwitKey'),
     consumerSecret: config.get('TwitSecret'),
-    callbackURL: "https://twitter.com"
+    callbackURL: "https://tranquil-forest-39573.herokuapp.com/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
     console.log(token)
@@ -95,7 +95,7 @@ passport.use(new TwitterStrategy({
 router.get('/twitter', passport.authenticate('twitter'));
 
 
-router.get('/twitter/callback',
+router.get('/auth/twitter/callback',
   passport.authenticate('twitter', { successRedirect: '/',
                                      failureRedirect: '/login' }));
 

@@ -35,15 +35,22 @@ if(isAuthenticated) {
     <p className='lead'>
       <i className='fas fa-user' /> Create Your Account
     </p>
-    <form className='form' onSubmit={e => onSubmit(e)}>
-      <div className='form-group'>
-        <input
-          type='text'
+    <div className='form-group'>
+      <input type='text'
           placeholder='Name'
           name='name'
           value={name}
-          onChange={e => onChange(e)}
-        />
+          onChange={e => onChange(e)} value={name} id="first_name2" type="text" className="validate" />
+      <label className="active" for="first_name2">First Name</label>
+    </div>
+    <form className='form' onSubmit={e => onSubmit(e)}>
+      <div className='form-group'>
+        <input type='text'
+            placeholder='Name'
+            name='name'
+            value={name}
+            onChange={e => onChange(e)} value={name} id="first_name2" type="text" className="validate" />
+        <label className="active" for="first_name2">First Name</label>
       </div>
       <div className='form-group'>
         <input

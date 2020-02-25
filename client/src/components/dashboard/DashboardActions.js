@@ -1,11 +1,8 @@
 import React from 'react'
 import {Link } from 'react-router-dom'
-import {verifyTwitter} from '../../actions/auth'
 
-const DashboardActions = ({verifyTwitter}) => {
-  const onTwitter = async => {
-      verifyTwitter()
-    }
+const DashboardActions = ({}) => {
+
   return (
     <div className='dash-buttons'>
       <Link to='/edit-profile' className='btn btn-light'>
@@ -20,9 +17,6 @@ const DashboardActions = ({verifyTwitter}) => {
       <Link to='/posts' className='btn btn-light'>
         <i className='fas fa-graduation-cap text-primary' /> View Posts
       </Link>
-      <button onClick={() => onTwitter()} className='btn btn-light'>
-        <i className='fas fa-graduation-cap text-primary' /> Twitter
-      </button>
     </div>
   )
 

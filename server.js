@@ -25,6 +25,13 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
+var session = require('express-session');
+app.use(session({
+  secret: 'cookie_secret',
+  proxy: true,
+  resave: true,
+  saveUninitialized: true
+   }));
 
 const PORT = process.env.PORT || 5001;
 const User = require('./models/User')
